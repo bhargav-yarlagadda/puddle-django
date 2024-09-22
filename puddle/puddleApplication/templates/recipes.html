@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Puddle | Home</title>
+</head>
+
+<body class="bg-gray-950 bg-opacity-90 from-blue-400 to-blue-300 min-h-screen flex items-center justify-center">
+
+    <div class="bg-white bg-opacity-50 shadow-lg backdrop-blur-xl rounded-lg p-8 max-w-lg w-full">
+        <h1 class="text-2xl font-semibold text-gray-800 mb-6 text-center">Create Your Recipe</h1>
+        <form class="space-y-6" action="" method="POST" enctype="multipart/form-data" >
+            <!-- Cross-Site Request Forgery -->
+            {% csrf_token %}
+            <!-- Recipe Name -->
+            <div>
+                <label for="recipe-name" name="recipe-name" class="block text-sm font-medium text-gray-700 mb-2">Recipe Name</label>
+                <input name="recipe-name" type="text" id="recipe-name" placeholder="Unleash your creativity"
+                    class="w-full bg-gray-50 border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900"
+                    required>
+            </div>
+
+            <!-- Recipe Description -->
+            <div>
+                <label name="recipe-desc" for="recipe-desc"
+                    class="block text-sm font-medium text-gray-700 mb-2">Recipe Description</label>
+                <textarea name="recipe-desc" rows="4" cols="50" id="recipe-description" rows="4" placeholder="Describe your recipe"
+                    class="w-full bg-gray-50 border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900"
+                    required></textarea>
+            </div>
+
+            <!-- Recipe Image -->
+            <div class="relative w-full">
+                <!-- File input styled via surrounding div -->
+                <label name="recipe-image" for="recipe-image"
+                class="block text-sm font-medium text-gray-700 mb-2">Recipe Image</label>
+                <input name="recipe-image" type="file" id="recipe-image" name="recipe-image"
+                    class="block w-full text-sm text-gray-500 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 cursor-pointer"
+                    required>
+            </div>  
+
+            <!-- Submit Button -->
+            <button type="submit"
+                class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 rounded-lg shadow-lg transition focus:ring-4 focus:ring-blue-300 focus:outline-none focus:ring-opacity-50">
+                Submit Recipe
+            </button>
+        </form>
+    </div>
+
+</body>
+
+</html>
