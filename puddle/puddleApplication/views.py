@@ -20,3 +20,8 @@ def recipes(request):
      }
     return render(request,"recipes.html",context=context)
   
+def delete_recipe(request,id):
+
+    query_set = Recipe.objects.get(id=id)
+    query_set.delete()
+    return redirect('/')     

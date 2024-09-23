@@ -52,8 +52,8 @@
     <div class="container mx-auto px-4">
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {% for recipe in recipes %}
-            <div class="bg-white rounded-lg min-w-[300px] overflow-hidden shadow-lg transition transform hover:scale-105 duration-300 max-w-xs mx-auto">
-                <img class="w-full h-36 object-cover" src="{{ recipe.recipeImage.url }}" alt="Image of {{ recipe.recipeName }}">
+            <div class="bg-white rounded-lg w-[250px] overflow-hidden shadow-lg transition transform hover:scale-105 duration-300  mx-auto">
+                <img class="w-full h-36 object-cover object-center" src="{{ recipe.recipeImage.url }}" alt="Image of {{ recipe.recipeName }}">
                 <div class="p-4">
                     <h2 class="font-bold text-lg text-gray-800 mb-2">{{ recipe.recipeName }}</h2>
                     <p class="text-gray-600 text-sm">{{ recipe.recipeDesc|truncatewords:20 }}</p>
@@ -61,6 +61,13 @@
                 <div class="px-4 py-2">
                     <span class="inline-block bg-blue-100 text-blue-800 rounded-full px-3 py-1 text-xs font-semibold mr-2">#Recipe</span>
                     <span class="inline-block bg-green-100 text-green-800 rounded-full px-3 py-1 text-xs font-semibold">#Delicious</span>
+                </div>
+                <div class="w-full flex justify-centerl gap-5 p-2">
+                    <a href="/delete-recipe/{{recipe.id}}">
+                        <button class="bg-red-400 hover:bg-red-600 p-2 text-[15px] text-gray-100  rounded-md" >delete</button>
+                    </a>
+                    <button class="bg-sky-400 hover:bg-blue-600 p-2 text-[15px] text-gray-100  rounded-md" >update </button>
+
                 </div>
             </div>
             {% endfor %}
