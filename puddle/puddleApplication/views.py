@@ -14,4 +14,9 @@ def recipes(request):
             recipeImage=recipe_image
         )
         return redirect('/')
-    return render(request,"recipes.html")
+    queryset = Recipe.objects.all() 
+    context = {
+        'recipes':queryset
+     }
+    return render(request,"recipes.html",context=context)
+  

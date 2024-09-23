@@ -8,16 +8,17 @@
     <title>Puddle | Home</title>
 </head>
 
-<body class="bg-gray-950 bg-opacity-90 from-blue-400 to-blue-300 min-h-screen flex items-center justify-center">
+<body class="bg-gradient-to-br from-blue-400 to-blue-300 bg-opacity-90 min-h-screen flex flex-col items-center py-12">
 
-    <div class="bg-white bg-opacity-50 shadow-lg backdrop-blur-xl rounded-lg p-8 max-w-lg w-full">
-        <h1 class="text-2xl font-semibold text-gray-800 mb-6 text-center">Create Your Recipe</h1>
-        <form class="space-y-6" action="" method="POST" enctype="multipart/form-data" >
-            <!-- Cross-Site Request Forgery -->
+    <!-- Form Section -->
+    <div class="bg-white bg-opacity-60 shadow-xl backdrop-blur-md rounded-lg p-8 max-w-lg w-full mb-12">
+        <h1 class="text-3xl font-bold text-gray-800 mb-6 text-center">Create Your Recipe</h1>
+        <form class="space-y-6" action="" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
+
             <!-- Recipe Name -->
             <div>
-                <label for="recipe-name" name="recipe-name" class="block text-sm font-medium text-gray-700 mb-2">Recipe Name</label>
+                <label for="recipe-name" class="block text-sm font-medium text-gray-700 mb-2">Recipe Name</label>
                 <input name="recipe-name" type="text" id="recipe-name" placeholder="Unleash your creativity"
                     class="w-full bg-gray-50 border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900"
                     required>
@@ -25,22 +26,19 @@
 
             <!-- Recipe Description -->
             <div>
-                <label name="recipe-desc" for="recipe-desc"
-                    class="block text-sm font-medium text-gray-700 mb-2">Recipe Description</label>
-                <textarea name="recipe-desc" rows="4" cols="50" id="recipe-description" rows="4" placeholder="Describe your recipe"
+                <label for="recipe-desc" class="block text-sm font-medium text-gray-700 mb-2">Recipe Description</label>
+                <textarea name="recipe-desc" id="recipe-desc" rows="4" placeholder="Describe your recipe"
                     class="w-full bg-gray-50 border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900"
                     required></textarea>
             </div>
 
             <!-- Recipe Image -->
-            <div class="relative w-full">
-                <!-- File input styled via surrounding div -->
-                <label name="recipe-image" for="recipe-image"
-                class="block text-sm font-medium text-gray-700 mb-2">Recipe Image</label>
-                <input name="recipe-image" type="file" id="recipe-image" name="recipe-image"
-                    class="block w-full text-sm text-gray-500 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 cursor-pointer"
+            <div>
+                <label for="recipe-image" class="block text-sm font-medium text-gray-700 mb-2">Recipe Image</label>
+                <input name="recipe-image" type="file" id="recipe-image"
+                    class="block w-full text-sm text-gray-500 border border-gray-300 rounded-lg bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 cursor-pointer"
                     required>
-            </div>  
+            </div>
 
             <!-- Submit Button -->
             <button type="submit"
@@ -48,6 +46,25 @@
                 Submit Recipe
             </button>
         </form>
+    </div>
+
+    <!-- Recipe Cards Section -->
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {% for recipe in recipes %}
+            <div class="bg-white rounded-lg min-w-[300px] overflow-hidden shadow-lg transition transform hover:scale-105 duration-300 max-w-xs mx-auto">
+                <img class="w-full h-36 object-cover" src="{{ recipe.recipeImage.url }}" alt="Image of {{ recipe.recipeName }}">
+                <div class="p-4">
+                    <h2 class="font-bold text-lg text-gray-800 mb-2">{{ recipe.recipeName }}</h2>
+                    <p class="text-gray-600 text-sm">{{ recipe.recipeDesc|truncatewords:20 }}</p>
+                </div>
+                <div class="px-4 py-2">
+                    <span class="inline-block bg-blue-100 text-blue-800 rounded-full px-3 py-1 text-xs font-semibold mr-2">#Recipe</span>
+                    <span class="inline-block bg-green-100 text-green-800 rounded-full px-3 py-1 text-xs font-semibold">#Delicious</span>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
     </div>
 
 </body>
