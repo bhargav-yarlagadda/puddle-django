@@ -20,6 +20,7 @@
             <div>
                 <label for="recipe-name" class="block text-sm font-medium text-gray-700 mb-2">Recipe Name</label>
                 <input name="recipe-name" type="text" id="recipe-name" placeholder="Unleash your creativity"
+                    value="{{recipe.recipeName}}"
                     class="w-full bg-gray-50 border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900"
                     required>
             </div>
@@ -29,15 +30,15 @@
                 <label for="recipe-desc" class="block text-sm font-medium text-gray-700 mb-2">Recipe Description</label>
                 <textarea name="recipe-desc" id="recipe-desc" rows="4" placeholder="Describe your recipe"
                     class="w-full bg-gray-50 border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900"
-                    required></textarea>
+                    required>{{recipe.recipeDesc}}</textarea>
             </div>
 
             <!-- Recipe Image -->
             <div>
                 <label for="recipe-image" class="block text-sm font-medium text-gray-700 mb-2">Recipe Image</label>
-                <input name="recipe-image" type="file" id="recipe-image"
+                <input name="recipe-image" type="file" id="recipe-image" placeholder="reupload recipe image"
                     class="block w-full text-sm text-gray-500 border border-gray-300 rounded-lg bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 cursor-pointer"
-                    required>
+                >
             </div>
             <!-- Submit Button -->
             <button type="submit"
