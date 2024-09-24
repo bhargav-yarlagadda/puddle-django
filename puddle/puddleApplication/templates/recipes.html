@@ -60,8 +60,10 @@
                     alt="Image of {{ recipe.recipeName }}"
                 >
                 <div class="p-4">
+                    <p class="text-gray-600 text-xs">Created by: {{ recipe.user}}</p>
                     <h2 class="font-bold text-lg text-gray-800 mb-2">{{ recipe.recipeName }}</h2>
                     <p class="text-gray-600 text-sm">{{ recipe.recipeDesc|truncatewords:20 }}</p>
+
                 </div>
                 <div class="px-4 py-2">
                     <span
