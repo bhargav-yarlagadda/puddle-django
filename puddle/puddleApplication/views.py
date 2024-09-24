@@ -14,7 +14,7 @@ def recipes(request):
             recipeImage=recipe_image
         )
         return redirect('/')
-    queryset = Recipe.objects.all() 
+    queryset = Recipe.objects.all()     
     context = {
         'recipes':queryset
      }
@@ -25,3 +25,9 @@ def delete_recipe(request,id):
     query_set = Recipe.objects.get(id=id)
     query_set.delete()
     return redirect('/')     
+
+  
+def update_recipe(request,id):
+
+    
+    return render(request,'update.html')
