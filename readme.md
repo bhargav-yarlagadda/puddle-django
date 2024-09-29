@@ -33,5 +33,26 @@ This Django Recipe application allows users to create, update, delete, and view 
     python manage.py runserver
 
 
-    
+4. **application structure**
 
+    ```bash
+        puddle/                  # Root directory of your Django project
+        │
+        ├── asgi.py              # ASGI config for async support (used in deployment)
+        ├── settings.py          # Main settings/configuration for the Django project
+        ├── urls.py              # Main URL routing for the entire project
+        ├── wsgi.py              # WSGI config for deployment
+        └── __init__.py          # Indicates that this is a Python package
+
+        puddleApplication/       # Application directory within the Django project
+        │
+        ├── migrations/          # Database migration files (auto-generated)
+        ├── static/              # Static files like CSS, JS, and images
+        ├── templates/           # HTML templates for rendering views
+        │   ├── recipes.html     # Template for displaying all recipes
+        │   └── update.html      # Template for updating a recipe
+        ├── models.py            # Database models (e.g., Recipe model)
+        ├── views.py             # Views for handling logic (CRUD, authentication)
+        ├── admin.py             # Configuration for Django Admin interface
+        ├── urls.py              # URL routing specific to this app
+        └── __init__.py          # Indicates that this is a Python package
