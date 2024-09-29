@@ -9,7 +9,22 @@
 </head>
 
 <body class="bg-gradient-to-br from-blue-400 to-blue-300 bg-opacity-90 min-h-screen flex flex-col items-center py-12">
+    <div class=" absolute font-semibold w-full flex text-gray-700  justify-between px-3">
+        <div class="-translate-x-[97%] z-[40] bg-opacity-60 cursor-pointer transition ease-in duration-500 bg-pink-600 rounded-md hover:translate-x-0 p-4">
+            <span class="text-black font-thin">
+                Logged in as <br>
+                <p class="font-thin font-medium text-[#ffe644] italic text-beige-200" >{{ request.user }}</p>
+            </span>
 
+        </div>
+        <div class="max-w-[140px] h-[20px]">
+            <a href="/logout" class="hover:bg-red-600 z-[40] relative bg-opacity-60 cursor-pointer transition-transform ease-in duration-500 bg-pink-600 rounded-md translate-x-[50%] hover:translate-x-0 p-4">
+                Log Out
+            </a>
+            
+        </div>
+        
+    </div>
     <!-- Form Section -->
     <div class="bg-white bg-opacity-60 shadow-xl backdrop-blur-md rounded-lg p-8 max-w-lg w-full mb-12">
         <h1 class="text-3xl font-bold text-gray-800 mb-6 text-center">Create Your Recipe</h1>

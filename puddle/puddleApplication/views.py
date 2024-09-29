@@ -2,8 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from puddleApplication.models import Recipe
 from django.contrib.auth.models import User
 from django.contrib import messages 
-from django.contrib.auth import authenticate, login
-
+from django.contrib.auth import authenticate, login,logout
 # Create your views here.
 def recipes(request):
     if request.method == "POST":
@@ -51,7 +50,9 @@ def update_recipe(request, id):
     
     context = {'recipe': query_set}
     return render(request, 'update.html', context=context)
-
+def logout_page(request):
+    logout(request=request)
+    return redirect('/login')
 def login_page(request):
     if request.method == 'POST':
         data = request.POST
