@@ -23,11 +23,12 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 
 urlpatterns = [
-    path('',recipes),
+    path('',login_page),
+    path('recipes/',recipes),
     path('delete-recipe/<int:id>/', delete_recipe),
     path('update-recipe/<int:id>/', update_recipe),
     path('admin/', admin.site.urls),
-    path('login/',login),
+    path('login/',login_page),
     path('register/',register)
 ]
 
